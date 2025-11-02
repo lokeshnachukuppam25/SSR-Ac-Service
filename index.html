@@ -242,10 +242,103 @@
             margin-right: auto;
             overflow-x: hidden;
         }
+        
+        /* Top Button Bar */
+        .top-button-bar {
+            position: fixed;
+            top: 0;
+            right: 15px;
+            z-index: 1050;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            padding: 12px 0;
+            background: transparent;
+        }
+        
+        .top-button-bar button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .top-button-bar #topViewModeToggle {
+            background-color: var(--primary);
+            color: white;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+        }
+        
+        .top-button-bar #topViewModeToggle:hover {
+            transform: scale(1.15);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+        }
+        
+        .top-button-bar #topNightModeToggle {
+            width: 50px;
+            height: 26px;
+            border-radius: 13px;
+            background-color: #ccc;
+            padding: 0;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+        }
+        
+        .top-button-bar #topNightModeToggle:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+        }
+        
+        .top-button-bar #topNightModeToggle.dark-active {
+            background-color: var(--primary);
+        }
+        
+        .top-button-bar .toggle-slider {
+            position: absolute;
+            top: 3px;
+            left: 3px;
+            width: 20px;
+            height: 20px;
+            background-color: white;
+            border-radius: 50%;
+            transition: left 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .top-button-bar #topNightModeToggle.dark-active .toggle-slider {
+            left: 27px;
+        }
+        
+        .top-button-bar .toggle-slider i {
+            font-size: 12px;
+            color: #666;
+        }
+        
+        .top-button-bar #topNightModeToggle.dark-active .toggle-slider i {
+            color: var(--primary);
+        }
     </style>
 </head>
 
 <body>
+    <!-- Top Button Bar Start -->
+    <div class="top-button-bar">
+        <button class="btn" id="topViewModeToggle" title="Toggle View Mode (Desktop/Mobile)">
+            <i class="fas fa-mobile-alt"></i>
+        </button>
+        <button class="btn" id="topNightModeToggle" title="Toggle Night Mode">
+            <div class="toggle-slider">
+                <i class="fas fa-moon"></i>
+            </div>
+        </button>
+    </div>
+    <!-- Top Button Bar End -->
+
     <!-- Spinner Start -->
     <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
         <div class="spinner-grow text-primary" role="status"></div>
@@ -270,14 +363,6 @@
                 <a href="#working-hours" class="nav-item nav-link" style="font-size: 0.9rem;">Working Hours</a>
             </div>
             <div class="h-100 d-flex align-items-center gap-1">
-                <button class="btn btn-sm rounded-circle d-flex align-items-center justify-content-center" id="viewModeToggle" title="Toggle View Mode (Desktop/Mobile)" style="width: 35px; height: 35px; background-color: var(--primary); color: white;">
-                    <i class="fas fa-mobile-alt"></i>
-                </button>
-                <button class="toggle-switch" id="nightModeToggle" title="Toggle Night Mode">
-                    <div class="toggle-slider">
-                        <i class="fas fa-moon"></i>
-                    </div>
-                </button>
                 <a class="btn btn-sm rounded-circle d-flex align-items-center justify-content-center d-none d-lg-flex" href="https://www.instagram.com/sriramairconditioner?igsh=YWFwNTN1eWRkbmxi&utm_source=qr" target="_blank" title="Follow us on Instagram" style="width: 35px; height: 35px; background-color: var(--primary); color: white;"><i class="fab fa-instagram"></i></a>
                 <a class="btn btn-sm rounded-circle d-flex align-items-center justify-content-center d-none d-lg-flex" href="tel:+918637401169" title="Call us" style="width: 35px; height: 35px; background-color: var(--primary); color: white;"><i class="fas fa-phone"></i></a>
                 <a class="btn btn-sm rounded-circle d-flex align-items-center justify-content-center d-none d-lg-flex" href="mailto:sriramairconditioner23@gmail.com" title="Email us" style="width: 35px; height: 35px; background-color: var(--primary); color: white;"><i class="fas fa-envelope"></i></a>
@@ -888,20 +973,20 @@
     <!-- Dark Mode Toggle Script -->
     <script>
         // Dark Mode Toggle Functionality
-        const nightModeToggle = document.getElementById('nightModeToggle');
+        const topNightModeToggle = document.getElementById('topNightModeToggle');
         const body = document.body;
         
         // Check if user has a saved preference
         const savedMode = localStorage.getItem('nightMode');
         if (savedMode === 'enabled') {
             body.classList.add('dark-mode');
-            nightModeToggle.classList.add('dark-active');
+            topNightModeToggle.classList.add('dark-active');
         }
         
         // Toggle dark mode on button click
-        nightModeToggle.addEventListener('click', function() {
+        topNightModeToggle.addEventListener('click', function() {
             body.classList.toggle('dark-mode');
-            nightModeToggle.classList.toggle('dark-active');
+            topNightModeToggle.classList.toggle('dark-active');
             
             // Save preference
             if (body.classList.contains('dark-mode')) {
@@ -915,28 +1000,28 @@
     <!-- View Mode Toggle Script -->
     <script>
         // View Mode Toggle Functionality
-        const viewModeToggle = document.getElementById('viewModeToggle');
+        const topViewModeToggle = document.getElementById('topViewModeToggle');
         
         // Check if user has a saved view mode preference
         const savedViewMode = localStorage.getItem('viewMode');
         if (savedViewMode === 'mobile') {
             body.classList.add('force-mobile-view');
-            viewModeToggle.classList.add('desktop-mode');
-            viewModeToggle.title = 'Switch to Desktop View';
+            topViewModeToggle.classList.add('desktop-mode');
+            topViewModeToggle.title = 'Switch to Desktop View';
         }
         
         // Toggle view mode on button click
-        viewModeToggle.addEventListener('click', function() {
+        topViewModeToggle.addEventListener('click', function() {
             body.classList.toggle('force-mobile-view');
-            viewModeToggle.classList.toggle('desktop-mode');
+            topViewModeToggle.classList.toggle('desktop-mode');
             
             // Save preference and update title
             if (body.classList.contains('force-mobile-view')) {
                 localStorage.setItem('viewMode', 'mobile');
-                viewModeToggle.title = 'Switch to Desktop View';
+                topViewModeToggle.title = 'Switch to Desktop View';
             } else {
                 localStorage.setItem('viewMode', 'desktop');
-                viewModeToggle.title = 'Switch to Mobile View';
+                topViewModeToggle.title = 'Switch to Mobile View';
             }
         });
     </script>
