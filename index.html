@@ -215,6 +215,33 @@
         .toggle-switch.dark-active .toggle-slider i {
             color: var(--primary);
         }
+        
+        /* View Mode Toggle Button */
+        #viewModeToggle {
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+        
+        #viewModeToggle:hover {
+            transform: scale(1.1);
+            border-color: white;
+        }
+        
+        #viewModeToggle.desktop-mode {
+            background-color: var(--primary) !important;
+        }
+        
+        #viewModeToggle.desktop-mode i {
+            transform: rotate(90deg);
+            display: inline-block;
+        }
+        
+        body.force-mobile-view {
+            max-width: 480px !important;
+            margin-left: auto;
+            margin-right: auto;
+            overflow-x: hidden;
+        }
     </style>
 </head>
 
@@ -243,6 +270,9 @@
                 <a href="#working-hours" class="nav-item nav-link" style="font-size: 0.9rem;">Working Hours</a>
             </div>
             <div class="h-100 d-lg-inline-flex align-items-center d-none gap-1">
+                <button class="btn btn-sm rounded-circle d-flex align-items-center justify-content-center" id="viewModeToggle" title="Toggle View Mode (Desktop/Mobile)" style="width: 35px; height: 35px; background-color: var(--primary); color: white;">
+                    <i class="fas fa-mobile-alt"></i>
+                </button>
                 <button class="toggle-switch" id="nightModeToggle" title="Toggle Night Mode">
                     <div class="toggle-slider">
                         <i class="fas fa-moon"></i>
@@ -878,6 +908,35 @@
                 localStorage.setItem('nightMode', 'enabled');
             } else {
                 localStorage.setItem('nightMode', 'disabled');
+            }
+        });
+    </script>
+    
+    <!-- View Mode Toggle Script -->
+    <script>
+        // View Mode Toggle Functionality
+        const viewModeToggle = document.getElementById('viewModeToggle');
+        
+        // Check if user has a saved view mode preference
+        const savedViewMode = localStorage.getItem('viewMode');
+        if (savedViewMode === 'mobile') {
+            body.classList.add('force-mobile-view');
+            viewModeToggle.classList.add('desktop-mode');
+            viewModeToggle.title = 'Switch to Desktop View';
+        }
+        
+        // Toggle view mode on button click
+        viewModeToggle.addEventListener('click', function() {
+            body.classList.toggle('force-mobile-view');
+            viewModeToggle.classList.toggle('desktop-mode');
+            
+            // Save preference and update title
+            if (body.classList.contains('force-mobile-view')) {
+                localStorage.setItem('viewMode', 'mobile');
+                viewModeToggle.title = 'Switch to Desktop View';
+            } else {
+                localStorage.setItem('viewMode', 'desktop');
+                viewModeToggle.title = 'Switch to Mobile View';
             }
         });
     </script>
