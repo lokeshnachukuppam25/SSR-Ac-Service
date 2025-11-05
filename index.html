@@ -82,6 +82,10 @@
         }
         
         /* Dark Mode Styles */
+        body {
+            transition: background-color 0.4s ease, color 0.4s ease;
+        }
+        
         body.dark-mode {
             background-color: #1a1a1a;
             color: #e0e0e0;
@@ -90,10 +94,12 @@
         body.dark-mode .navbar {
             background-color: #2d2d2d !important;
             border-bottom: 1px solid #444;
+            transition: background-color 0.4s ease;
         }
         
         body.dark-mode .navbar-light .navbar-nav .nav-link {
             color: #e0e0e0 !important;
+            transition: color 0.4s ease;
         }
         
         body.dark-mode .navbar-light .navbar-nav .nav-link:hover {
@@ -106,39 +112,47 @@
         
         body.dark-mode .bg-light {
             background-color: #2d2d2d !important;
+            transition: background-color 0.4s ease;
         }
         
         body.dark-mode .container-fluid {
             background-color: #1a1a1a;
+            transition: background-color 0.4s ease;
         }
         
         body.dark-mode .card {
             background-color: #2d2d2d;
             border-color: #444;
             color: #e0e0e0;
+            transition: background-color 0.4s ease, border-color 0.4s ease, color 0.4s ease;
         }
         
         body.dark-mode .text-body {
             color: #e0e0e0 !important;
+            transition: color 0.4s ease;
         }
         
         body.dark-mode h1, body.dark-mode h2, body.dark-mode h3, body.dark-mode h4, body.dark-mode h5, body.dark-mode h6 {
             color: #ffffff;
+            transition: color 0.4s ease;
         }
         
         body.dark-mode .section-title h2 {
             color: #ffffff;
+            transition: color 0.4s ease;
         }
         
         body.dark-mode .btn-light {
             background-color: #3d3d3d !important;
             border-color: #555 !important;
             color: #e0e0e0 !important;
+            transition: background-color 0.4s ease, border-color 0.4s ease, color 0.4s ease;
         }
         
         body.dark-mode .table {
             color: #e0e0e0;
             border-color: #444;
+            transition: color 0.4s ease, border-color 0.4s ease;
         }
         
         body.dark-mode .table thead {
@@ -147,6 +161,7 @@
         
         body.dark-mode .table tbody tr {
             background-color: #2d2d2d;
+            transition: background-color 0.4s ease;
         }
         
         body.dark-mode .table tbody tr:hover {
@@ -156,18 +171,21 @@
         body.dark-mode .modal-content {
             background-color: #2d2d2d;
             color: #e0e0e0;
+            transition: background-color 0.4s ease, color 0.4s ease;
         }
         
         body.dark-mode .form-control {
             background-color: #3d3d3d;
             border-color: #555;
             color: #e0e0e0;
+            transition: background-color 0.4s ease, border-color 0.4s ease, color 0.4s ease;
         }
         
         body.dark-mode .form-control:focus {
             background-color: #3d3d3d;
             border-color: var(--primary);
             color: #e0e0e0;
+            transition: background-color 0.4s ease, border-color 0.4s ease, color 0.4s ease;
         }
         
         /* Toggle Switch Styles */
@@ -246,13 +264,14 @@
         /* Top Button Bar */
         .top-button-bar {
             position: fixed;
-            top: 0;
-            right: 15px;
+            top: 20px;
+            left: 180px;
             z-index: 1050;
             display: flex;
-            gap: 10px;
+            flex-direction: row;
+            gap: 12px;
             align-items: center;
-            padding: 12px 0;
+            padding: 0;
             background: transparent;
         }
         
@@ -322,21 +341,45 @@
         .top-button-bar #topNightModeToggle.dark-active .toggle-slider i {
             color: var(--primary);
         }
+        
+        /* Navbar Night Mode Button Styles */
+        #topNightModeToggle {
+            position: relative !important;
+            transition: background-color 0.5s ease, box-shadow 0.5s ease !important;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15) !important;
+        }
+        
+        #topNightModeToggle:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25) !important;
+        }
+        
+        #topNightModeToggle.dark-active {
+            background-color: var(--primary) !important;
+            box-shadow: 0 2px 8px rgba(255, 128, 15, 0.4) !important;
+        }
+        
+        #topNightModeToggle .toggle-slider {
+            transition: left 0.5s cubic-bezier(0.4, 0.0, 0.2, 1) !important;
+        }
+        
+        #topNightModeToggle.dark-active .toggle-slider {
+            left: 27px !important;
+        }
+        
+        #topNightModeToggle.dark-active .toggle-slider i {
+            color: var(--primary) !important;
+            transition: color 0.5s ease !important;
+        }
+        
+        #topNightModeToggle .toggle-slider i {
+            transition: color 0.5s ease !important;
+        }
     </style>
 </head>
 
 <body>
     <!-- Top Button Bar Start -->
-    <div class="top-button-bar">
-        <button class="btn" id="topViewModeToggle" title="Toggle View Mode (Desktop/Mobile)">
-            <i class="fas fa-mobile-alt"></i>
-        </button>
-        <button class="btn" id="topNightModeToggle" title="Toggle Night Mode">
-            <div class="toggle-slider">
-                <i class="fas fa-moon"></i>
-            </div>
-        </button>
-    </div>
+    <!-- Removed - Button moved to navbar -->
     <!-- Top Button Bar End -->
 
     <!-- Spinner Start -->
@@ -348,8 +391,13 @@
     <!-- Navbar Start -->
     <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top px-2 px-lg-5">
         <a href="index.html" class="navbar-brand d-flex align-items-center" style="gap: 8px;">
-            <img class="img-fluid" src="img/icon/icon-02-primary.png" alt="SSR Logo" style="height: 35px; width: auto;">
-            <h1 class="m-0" style="font-weight: 700; color: var(--primary); font-size: clamp(1rem, 3vw, 1.8rem); display: flex; align-items: center; height: 35px;">SSR</h1>
+            <img class="img-fluid" src="img/icon/icon-02-primary.png" alt="SSR Logo" style="height: 35px; width: auto; display: flex; align-items: center;">
+            <h1 class="m-0" style="font-weight: 700; color: var(--primary); font-size: clamp(1rem, 3vw, 1.8rem); display: flex; align-items: center; height: auto; line-height: 1;">SSR</h1>
+            <button class="btn" id="topNightModeToggle" title="Toggle Night Mode" style="margin-left: 15px; width: 50px; height: 26px; border-radius: 13px; background-color: #ccc; padding: 0; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15); position: relative; display: flex; align-items: center;">
+                <div class="toggle-slider" style="position: absolute; top: 3px; left: 3px; width: 20px; height: 20px; background-color: white; border-radius: 50%; transition: left 0.3s; display: flex; align-items: center; justify-content: center;">
+                    <i class="fas fa-sun" style="font-size: 12px; color: #666;"></i>
+                </div>
+            </button>
         </a>
         <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
             <span class="navbar-toggler-icon"></span>
@@ -357,10 +405,10 @@
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav mx-auto bg-light pe-2 py-2 py-lg-0">
                 <a href="#home" class="nav-item nav-link active" style="font-size: 0.9rem;">Home</a>
-                <a href="#about" class="nav-item nav-link" style="font-size: 0.9rem;">About Us</a>
                 <a href="#book-service" class="nav-item nav-link" style="font-size: 0.9rem;">Contact Us</a>
-                <a href="#services" class="nav-item nav-link" style="font-size: 0.9rem;">Our Services</a>
+                <a href="#about" class="nav-item nav-link" style="font-size: 0.9rem;">About Us</a>
                 <a href="#working-hours" class="nav-item nav-link" style="font-size: 0.9rem;">Working Hours</a>
+                <a href="#services" class="nav-item nav-link" style="font-size: 0.9rem;">Our Services</a>
             </div>
             <div class="h-100 d-flex align-items-center gap-1">
                 <a class="btn btn-sm rounded-circle d-flex align-items-center justify-content-center d-none d-lg-flex" href="https://www.instagram.com/sriramairconditioner?igsh=YWFwNTN1eWRkbmxi&utm_source=qr" target="_blank" title="Follow us on Instagram" style="width: 35px; height: 35px; background-color: var(--primary); color: white;"><i class="fab fa-instagram"></i></a>
@@ -509,6 +557,8 @@
                     <div class="h-100 px-4 px-sm-5 pe-lg-0 wow fadeIn" data-wow-delay="0.5s">
                         <div class="bg-white p-4 p-sm-5">
                             <form action="https://formsubmit.co/sriramairconditioner23@gmail.com" method="POST">
+                                <input type="hidden" name="_captcha" value="false">
+                                <input type="hidden" name="_next" value="https://lokeshnachukuppam25.github.io/SSR-Ac-Service/index.html">
                                 <div class="row g-3">
                                     <div class="col-sm-6">
                                         <div class="form-floating">
@@ -525,6 +575,12 @@
                                         <div class="form-floating">
                                             <input type="text" class="form-control" id="gmail" name="name" placeholder="Name" required>
                                             <label for="gmail">Name</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-floating">
+                                            <input type="email" class="form-control" id="email" name="email" placeholder="Email" required>
+                                            <label for="email">Email</label>
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
@@ -973,55 +1029,28 @@
     <!-- Dark Mode Toggle Script -->
     <script>
         // Dark Mode Toggle Functionality
-        const topNightModeToggle = document.getElementById('topNightModeToggle');
+        const nightModeToggle = document.getElementById('topNightModeToggle');
         const body = document.body;
         
         // Check if user has a saved preference
         const savedMode = localStorage.getItem('nightMode');
         if (savedMode === 'enabled') {
             body.classList.add('dark-mode');
-            topNightModeToggle.classList.add('dark-active');
+            nightModeToggle.classList.add('dark-active');
         }
         
         // Toggle dark mode on button click
-        topNightModeToggle.addEventListener('click', function() {
+        nightModeToggle.addEventListener('click', function(event) {
+            event.preventDefault();
+            event.stopPropagation();
             body.classList.toggle('dark-mode');
-            topNightModeToggle.classList.toggle('dark-active');
+            nightModeToggle.classList.toggle('dark-active');
             
             // Save preference
             if (body.classList.contains('dark-mode')) {
                 localStorage.setItem('nightMode', 'enabled');
             } else {
                 localStorage.setItem('nightMode', 'disabled');
-            }
-        });
-    </script>
-    
-    <!-- View Mode Toggle Script -->
-    <script>
-        // View Mode Toggle Functionality
-        const topViewModeToggle = document.getElementById('topViewModeToggle');
-        
-        // Check if user has a saved view mode preference
-        const savedViewMode = localStorage.getItem('viewMode');
-        if (savedViewMode === 'mobile') {
-            body.classList.add('force-mobile-view');
-            topViewModeToggle.classList.add('desktop-mode');
-            topViewModeToggle.title = 'Switch to Desktop View';
-        }
-        
-        // Toggle view mode on button click
-        topViewModeToggle.addEventListener('click', function() {
-            body.classList.toggle('force-mobile-view');
-            topViewModeToggle.classList.toggle('desktop-mode');
-            
-            // Save preference and update title
-            if (body.classList.contains('force-mobile-view')) {
-                localStorage.setItem('viewMode', 'mobile');
-                topViewModeToggle.title = 'Switch to Desktop View';
-            } else {
-                localStorage.setItem('viewMode', 'desktop');
-                topViewModeToggle.title = 'Switch to Mobile View';
             }
         });
     </script>
