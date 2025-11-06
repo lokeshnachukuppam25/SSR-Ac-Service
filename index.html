@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <title>SSR</title>
-    <meta name="viewport" content="width=1200px, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=1200px, initial-scale=0.4, maximum-scale=1.0, user-scalable=yes">
     <meta content="" name="keywords">
     <meta content="" name="description">
 
@@ -38,8 +38,8 @@
         }
         
         * {
-            -webkit-text-size-adjust: 100%;
-            -ms-text-size-adjust: 100%;
+            -webkit-text-size-adjust: none;
+            -ms-text-size-adjust: none;
         }
 
         .carousel-caption {
@@ -61,6 +61,19 @@
             margin-left: auto;
             margin-right: auto;
             text-align: center;
+        }
+        
+        /* Prevent layout shifts on mobile zoom */
+        @media (max-width: 600px) {
+            body {
+                margin: 0;
+                padding: 0;
+            }
+            .navbar, .container, .row, .col {
+                width: 100%;
+                margin: 0;
+                padding: inherit;
+            }
         }
         .service-compact .row {
             margin-bottom: 0.3rem !important;
