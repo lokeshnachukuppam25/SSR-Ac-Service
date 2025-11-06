@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <title>SSR</title>
-    <meta name="viewport" content="width=1200px, initial-scale=0.45, maximum-scale=1.0, user-scalable=yes">
+    <meta name="viewport" content="width=1200px, initial-scale=0.35, maximum-scale=1.0, user-scalable=yes">
     <meta content="" name="keywords">
     <meta content="" name="description">
 
@@ -36,17 +36,25 @@
             width: 1200px;
             margin: 0 auto;
             padding: 0;
+            box-sizing: border-box;
         }
         
         * {
             -webkit-text-size-adjust: none;
             -ms-text-size-adjust: none;
+            box-sizing: border-box;
         }
 
         /* Fix alignment for all containers */
-        .container, .navbar-brand, .navbar-nav {
+        .container {
+            width: 1200px !important;
+            max-width: 1200px !important;
+            margin: 0 auto !important;
+            padding: 0 15px !important;
+        }
+
+        .navbar-brand, .navbar-nav {
             margin: 0 !important;
-            padding: 0 !important;
         }
 
         .carousel-caption {
@@ -70,16 +78,15 @@
             text-align: center;
         }
         
-        /* Prevent layout shifts on mobile zoom */
-        @media (max-width: 600px) {
-            body {
-                margin: 0;
-                padding: 0;
+        /* Fix alignment on mobile */
+        @media (max-width: 768px) {
+            .row {
+                margin-right: 0 !important;
+                margin-left: 0 !important;
             }
-            .navbar, .container, .row, .col {
-                width: 100%;
-                margin: 0 !important;
-                padding: 0 !important;
+            .col, [class*="col-"] {
+                padding-right: 0 !important;
+                padding-left: 0 !important;
             }
         }
         .service-compact .row {
