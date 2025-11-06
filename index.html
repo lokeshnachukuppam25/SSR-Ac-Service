@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <title>SSR</title>
-    <meta name="viewport" content="width=1200, initial-scale=0.5, maximum-scale=5, user-scalable=yes">
+    <meta name="viewport" content="width=1200, initial-scale=0.6, maximum-scale=5, user-scalable=yes">
     <meta content="" name="keywords">
     <meta content="" name="description">
 
@@ -91,6 +91,52 @@
         }
         .service-compact .col-md-3 i {
             margin-right: 0.25rem !important;
+        }
+        
+        /* Book Your Service - Exact Desktop Layout */
+        .quote {
+            width: 100%;
+            max-width: 1200px;
+        }
+        
+        .quote .row {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            margin: 0 !important;
+        }
+        
+        .quote-text {
+            width: 50%;
+            flex: 0 0 50%;
+            background-size: cover;
+            background-position: center;
+            min-height: 400px;
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+        }
+        
+        .quote-form {
+            width: 50%;
+            flex: 0 0 50%;
+            background-size: cover;
+            background-position: center;
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+        }
+        
+        /* Prevent responsive behavior */
+        @media (max-width: 992px) {
+            .quote-text, .quote-form {
+                width: 50% !important;
+                flex: 0 0 50% !important;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .quote-text, .quote-form {
+                width: 50% !important;
+                flex: 0 0 50% !important;
+                min-height: 400px !important;
+            }
         }
         
         /* Dark Mode Styles */
