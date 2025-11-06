@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <title>SSR</title>
-    <meta name="viewport" content="width=1200px, initial-scale=0.35, maximum-scale=1.0, user-scalable=yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="" name="keywords">
     <meta content="" name="description">
 
@@ -31,59 +31,6 @@
     <link href="css/style.css" rel="stylesheet">
     
     <style>
-        /* Force Desktop View on All Devices */
-        html, body {
-            width: 1200px;
-            margin: 0 auto;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        * {
-            -webkit-text-size-adjust: none;
-            -ms-text-size-adjust: none;
-            box-sizing: border-box;
-        }
-
-        /* Fix alignment for all containers */
-        .container {
-            width: 1200px !important;
-            max-width: 1200px !important;
-            margin: 0 auto !important;
-            padding: 0 15px !important;
-        }
-
-        .navbar-brand, .navbar-nav {
-            margin: 0 !important;
-        }
-
-        /* Navbar alignment fix */
-        .navbar {
-            width: 1200px !important;
-            padding: 0 15px !important;
-        }
-        
-        .navbar .container-fluid {
-            width: 100% !important;
-            max-width: none !important;
-            padding: 0 !important;
-            margin: 0 !important;
-        }
-        
-        .navbar-brand {
-            padding: 0 !important;
-            margin-right: 2rem !important;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        
-        .navbar-nav {
-            width: 100%;
-            display: flex;
-            gap: 1rem;
-        }
-
         .carousel-caption {
             text-align: center !important;
         }
@@ -103,18 +50,6 @@
             margin-left: auto;
             margin-right: auto;
             text-align: center;
-        }
-        
-        /* Fix alignment on mobile */
-        @media (max-width: 768px) {
-            .row {
-                margin-right: 0 !important;
-                margin-left: 0 !important;
-            }
-            .col, [class*="col-"] {
-                padding-right: 0 !important;
-                padding-left: 0 !important;
-            }
         }
         .service-compact .row {
             margin-bottom: 0.3rem !important;
@@ -137,33 +72,6 @@
             display: flex;
             align-items: center;
             justify-content: center;
-        }
-
-        /* Book Your Service Section - Image Alignment */
-        .quote {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .quote .row {
-            width: 100%;
-        }
-
-        .quote-text, .quote-form {
-            width: 50% !important;
-            flex: 0 0 50% !important;
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-        }
-
-        .quote-text {
-            background-image: url('img/carousel-1.jpg') !important;
-        }
-
-        .quote-form {
-            background-image: url('img/carousel-2.jpg') !important;
         }
         .service-compact .col-md-3 span {
             font-size: 1rem;
