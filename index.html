@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <title>SSR</title>
-    <meta name="viewport" content="width=1200, initial-scale=0.8, maximum-scale=1.0, user-scalable=yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta content="" name="keywords">
     <meta content="" name="description">
 
@@ -31,25 +31,6 @@
     <link href="css/style.css" rel="stylesheet">
     
     <style>
-        /* Desktop View Only - Exact Layout */
-        html {
-            width: 1200px;
-            height: 100%;
-        }
-
-        body {
-            width: 1200px;
-            margin: 0 auto;
-            padding: 0;
-            overflow-y: auto;
-            overflow-x: hidden;
-        }
-
-        * {
-            -webkit-text-size-adjust: none;
-            -ms-text-size-adjust: none;
-        }
-
         .carousel-caption {
             text-align: center !important;
         }
@@ -91,59 +72,6 @@
             display: flex;
             align-items: center;
             justify-content: center;
-        }
-        .service-compact .col-md-3 span {
-            font-size: 1rem;
-            white-space: nowrap;
-        }
-        .service-compact .col-md-3 i {
-            margin-right: 0.25rem !important;
-        }
-        
-        /* Book Your Service - Exact Desktop Layout */
-        .quote {
-            width: 100%;
-            max-width: 1200px;
-        }
-        
-        .quote .row {
-            width: 100%;
-            display: flex;
-            flex-direction: row;
-            margin: 0 !important;
-        }
-        
-        .quote-text {
-            width: 50%;
-            flex: 0 0 50%;
-            background-size: cover;
-            background-position: center;
-            min-height: 400px;
-            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
-        }
-        
-        .quote-form {
-            width: 50%;
-            flex: 0 0 50%;
-            background-size: cover;
-            background-position: center;
-            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
-        }
-        
-        /* Prevent responsive behavior */
-        @media (max-width: 992px) {
-            .quote-text, .quote-form {
-                width: 50% !important;
-                flex: 0 0 50% !important;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .quote-text, .quote-form {
-                width: 50% !important;
-                flex: 0 0 50% !important;
-                min-height: 400px !important;
-            }
         }
         
         /* Dark Mode Styles */
