@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <title>SSR</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=1200px, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta content="" name="keywords">
     <meta content="" name="description">
 
@@ -31,6 +31,17 @@
     <link href="css/style.css" rel="stylesheet">
     
     <style>
+        /* Force Desktop View on All Devices */
+        html, body {
+            width: 1200px;
+            margin: 0 auto;
+        }
+        
+        * {
+            -webkit-text-size-adjust: 100%;
+            -ms-text-size-adjust: 100%;
+        }
+
         .carousel-caption {
             text-align: center !important;
         }
@@ -50,44 +61,6 @@
             margin-left: auto;
             margin-right: auto;
             text-align: center;
-        }
-
-        /* Desktop View Optimization */
-        @media (min-width: 1200px) {
-            .container {
-                max-width: 1100px !important;
-            }
-            .service-compact {
-                max-width: 1000px;
-            }
-            .row {
-                margin-right: -15px;
-                margin-left: -15px;
-            }
-            h1, h2, h3 {
-                font-size: 1.3em;
-            }
-            .navbar {
-                padding: 1.5rem 0;
-            }
-        }
-
-        /* Mobile View - Smaller and Compact */
-        @media (max-width: 768px) {
-            .container {
-                max-width: 100% !important;
-                padding: 0 10px;
-            }
-            h1, h2, h3 {
-                font-size: 1.1em;
-            }
-            .navbar {
-                padding: 0.8rem 0;
-            }
-            .service-compact {
-                max-width: 100%;
-                margin-bottom: 0.8rem !important;
-            }
         }
         .service-compact .row {
             margin-bottom: 0.3rem !important;
